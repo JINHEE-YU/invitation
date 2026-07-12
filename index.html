@@ -54,11 +54,12 @@
 
   /* ---------- 1. 표지 ---------- */
   .cover { position: relative; height: 100vh; min-height: 640px; padding: 0; color: #fff; }
-  .cover img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.72); }
+  .cover img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.85); }
   .cover .over {
     position: absolute; inset: 0;
     display: flex; flex-direction: column; align-items: center; justify-content: space-between;
     padding: 70px 28px 50px;
+    background: linear-gradient(to bottom, rgba(0,0,0,.5) 0%, rgba(0,0,0,.08) 30%, rgba(0,0,0,.08) 62%, rgba(0,0,0,.55) 100%);
   }
   .cover .top { font-family: var(--serif); font-size: 15px; letter-spacing: 6px; }
   .cover .names { font-family: 'Gowun Batang', serif; font-size: 42px; font-weight: 400; letter-spacing: 3px; line-height: 1.5; text-shadow: 0 2px 12px rgba(0,0,0,.4); }
@@ -183,7 +184,7 @@
 
   <!-- ============ 1. 표지 ============ -->
   <section class="cover">
-    <img src="https://picsum.photos/id/1015/860/1200" alt="메인 사진" />
+    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&q=80" alt="메인 사진" />
     <div class="over">
       <div class="top">WE ARE GETTING MARRIED</div>
       <div class="names">
