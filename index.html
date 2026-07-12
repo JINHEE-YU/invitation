@@ -70,6 +70,34 @@
   .scroll-hint { font-size: 22px; animation: bounce 1.8s infinite; }
   @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
 
+  /* ---- 표지 후보 2·3 (기본 숨김, #pick일 때 전환) ---- */
+  .cover-ed, .cover-po { display: none; }
+  body[data-cover="2"] .cover { display: none; }
+  body[data-cover="2"] .cover-ed { display: flex; }
+  body[data-cover="3"] .cover { display: none; }
+  body[data-cover="3"] .cover-po { display: flex; }
+
+  .cover-ed { min-height: 100vh; flex-direction: column; padding: 52px 30px 44px; background: var(--bg); }
+  .cover-ed .ed-crow { display: flex; justify-content: space-between; font-family: 'Cormorant Garamond', serif; font-size: 10px; letter-spacing: 2px; color: var(--muted); }
+  .cover-ed .ed-ph { flex: 1; margin: 22px 0; background: url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&q=80') center/cover; border-radius: 3px; min-height: 340px; }
+  .cover-ed .ed-nm { font-family: 'Nanum Myeongjo', serif; font-size: 30px; letter-spacing: 6px; color: var(--text); text-align: center; }
+  .cover-ed .ed-hr { width: 32px; height: 1px; background: var(--point); margin: 14px auto; }
+  .cover-ed .ed-en { font-family: 'Cormorant Garamond', serif; font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: var(--point); text-align: center; }
+  .cover-ed .ed-dt { font-size: 11px; letter-spacing: 2px; color: var(--muted); margin-top: 12px; text-align: center; }
+
+  .cover-po { position: relative; min-height: 100vh; flex-direction: column; justify-content: flex-end; align-items: center; text-align: center; color: #fff; padding: 40px 28px 54px; background: url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&q=80') center/cover; }
+  .cover-po::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,.15), rgba(0,0,0,.05) 45%, rgba(0,0,0,.66)); }
+  .cover-po > * { position: relative; z-index: 2; }
+  .cover-po .po-nm { font-family: 'Nanum Myeongjo', serif; font-size: 30px; letter-spacing: 8px; }
+  .cover-po .po-hr { width: 32px; height: 1px; background: #e6d0b6; margin: 14px auto; }
+  .cover-po .po-en { font-family: 'Cormorant Garamond', serif; font-size: 12px; letter-spacing: 5px; text-transform: uppercase; color: #e6d0b6; }
+  .cover-po .po-dt { font-size: 12px; letter-spacing: 2px; margin-top: 12px; color: #f0e6d6; }
+
+  .cover-pick { display: none; }
+  body.pickmode .cover-pick { display: block; position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 60;
+    background: #2a2622; color: #fff; font-family: sans-serif; font-size: 13px; padding: 9px 16px; border-radius: 30px; box-shadow: 0 4px 14px rgba(0,0,0,.3); cursor: pointer; }
+  .cover-pick b { color: #ffd98a; }
+
   /* ---------- 2. 인사말 ---------- */
   .greeting p { color: var(--text); font-size: 15.5px; }
   .greeting .poem { color: var(--muted); font-size: 14px; margin-bottom: 30px; }
@@ -198,6 +226,9 @@
   <!-- 배경음악을 쓰려면 아래 src에 mp3 경로를 넣으세요 -->
   <audio id="bgm" loop><source src="" type="audio/mpeg" /></audio>
 
+  <!-- 표지 전환 (URL 뒤에 #pick 붙였을 때만 노출) -->
+  <div class="cover-pick" id="coverPick" title="탭하면 다음 표지">표지 <b>1</b> · <b>2</b> · <b>3</b></div>
+
   <!-- ============ 1. 표지 ============ -->
   <section class="cover">
     <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&q=80" alt="메인 사진" />
@@ -217,6 +248,26 @@
         <div class="scroll-hint">︾</div>
       </div>
     </div>
+  </section>
+
+  <!-- 표지 후보 ② 에디토리얼 -->
+  <section class="cover-ed">
+    <div class="ed-crow"><span>THE WEDDING</span><span>NO. 0327</span></div>
+    <div class="ed-ph"></div>
+    <div>
+      <div class="ed-nm">오창휘 · 유진희</div>
+      <div class="ed-hr"></div>
+      <div class="ed-en">Changhwi &amp; Jinhee</div>
+      <div class="ed-dt">2027 . 03 . 27 &nbsp;SAT &nbsp;11:00 AM</div>
+    </div>
+  </section>
+
+  <!-- 표지 후보 ③ 세리프 포스터 -->
+  <section class="cover-po">
+    <div class="po-nm">오창휘 · 유진희</div>
+    <div class="po-hr"></div>
+    <div class="po-en">Changhwi &amp; Jinhee</div>
+    <div class="po-dt">03 . 27 . SAT &nbsp;11:00 AM</div>
   </section>
 
   <!-- ============ 2. 인사말 ============ -->
@@ -622,6 +673,17 @@ bgmBtn.onclick = () => {
   playing ? bgm.pause() : bgm.play();
   playing = !playing; bgmBtn.textContent = playing ? '❚❚' : '♪';
 };
+
+/* ---------- 표지 전환 (#pick 일 때만) ---------- */
+if(location.hash === '#pick'){
+  document.body.classList.add('pickmode');
+  const setCover = n => document.body.setAttribute('data-cover', String(n));
+  document.addEventListener('keydown', e => { if(['1','2','3'].includes(e.key)) setCover(e.key); });
+  document.getElementById('coverPick').onclick = () => {
+    const cur = +(document.body.getAttribute('data-cover') || 1);
+    setCover(cur % 3 + 1);
+  };
+}
 </script>
 </body>
 </html>
