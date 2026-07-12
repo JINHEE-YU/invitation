@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>결혼합니다 | 오창휘 ♥ 유진희</title>
+
+<!-- 카카오톡 공유 시 미리보기 (OG 태그) -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="오창휘 ♥ 유진희 결혼합니다" />
+<meta property="og:description" content="2027년 3월 27일 토요일 오전 11시" />
+<meta property="og:image" content="https://picsum.photos/id/1015/800/800" />
+
+<style>
+  /* =========================================================
+     🎨 색상 / 폰트 테마 — 여기만 바꿔도 전체 분위기가 바뀝니다
+     ========================================================= */
+  :root {
+    --bg:        #faf7f2;   /* 배경 */
+    --paper:     #ffffff;   /* 카드 배경 */
+    --text:      #4a4642;   /* 본문 글자 */
+    --muted:     #9a938b;   /* 흐린 글자 */
+    --point:     #b7906a;   /* 포인트(버튼/선) */
+    --line:      #eae4dc;   /* 구분선 */
+    --serif:     'Nanum Myeongjo', serif;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    background: #ded7cd;
+    color: var(--text);
+    font-family: 'Gowun Batang', serif;
+    line-height: 1.9;
+    letter-spacing: -0.01em;
+  }
+
+  /* 모바일 폭(430px)으로 고정된 종이 느낌의 컨테이너 */
+  .wrap {
+    max-width: 430px;
+    margin: 0 auto;
+    background: var(--bg);
+    min-height: 100vh;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0,0,0,.15);
+  }
+
+  section { padding: 60px 28px; text-align: center; }
+  .sub { color: var(--point); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; }
+  h2 { font-family: var(--serif); font-weight: 700; font-size: 22px; margin-bottom: 28px; color: var(--text); }
+  .divider { width: 40px; height: 1px; background: var(--point); margin: 0 auto 28px; }
+
+  /* ---------- 1. 표지 ---------- */
+  .cover { position: relative; height: 100vh; min-height: 640px; padding: 0; color: #fff; }
+  .cover img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.72); }
+  .cover .over {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+    padding: 70px 28px 50px;
+  }
+  .cover .top { font-family: var(--serif); font-size: 15px; letter-spacing: 6px; }
+  .cover .names { font-family: var(--serif); font-size: 40px; font-weight: 800; line-height: 1.5; text-shadow: 0 2px 12px rgba(0,0,0,.4); }
+  .cover .names small { display:block; font-size: 16px; font-weight: 400; letter-spacing: 2px; margin: 8px 0; }
+  .cover .date { font-size: 15px; letter-spacing: 2px; }
+  .scroll-hint { font-size: 22px; animation: bounce 1.8s infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+
+  /* ---------- 2. 인사말 ---------- */
+  .greeting p { color: var(--text); font-size: 15.5px; }
+  .greeting .poem { color: var(--muted); font-size: 14px; margin-bottom: 30px; }
+  .family { margin-top: 34px; font-size: 15px; line-height: 2.2; }
+  .family b { color: var(--point); }
+
+  /* ---------- 3. 갤러리 ---------- */
+  .gallery { padding-bottom: 40px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .grid img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; cursor: pointer; }
+
+  /* 라이트박스 */
+  .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.92); display: none; align-items: center; justify-content: center; z-index: 100; }
+  .lightbox.on { display: flex; }
+  .lightbox img { max-width: 92%; max-height: 82%; border-radius: 6px; }
+  .lightbox .x { position: absolute; top: 20px; right: 24px; color: #fff; font-size: 30px; cursor: pointer; }
+  .lightbox .nav { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 40px; padding: 20px; cursor: pointer; user-select: none; }
+  .lightbox .prev { left: 0; } .lightbox .next { right: 0; }
+
+  /* ---------- 4. 예식 정보 / 캘린더 / 카운트다운 ---------- */
+  .info .when { font-family: var(--serif); font-size: 20px; margin-bottom: 6px; }
+  .info .place { color: var(--muted); font-size: 14px; margin-bottom: 30px; }
+  .cal { max-width: 300px; margin: 0 auto 24px; background: var(--paper); border-radius: 10px; padding: 22px 18px; box-shadow: 0 4px 20px rgba(0,0,0,.05); }
+  .cal table { width: 100%; border-collapse: collapse; }
+  .cal th, .cal td { padding: 6px 0; font-size: 13px; }
+  .cal th { color: var(--point); font-weight: 700; }
+  .cal td.today { background: var(--point); color: #fff; border-radius: 50%; font-weight: 700; }
+  .cal .sun { color: #d08a8a; }
+  .countdown { display: flex; justify-content: center; gap: 10px; }
+  .countdown div { background: var(--paper); border-radius: 8px; padding: 12px 0; width: 62px; box-shadow: 0 2px 10px rgba(0,0,0,.05); }
+  .countdown .num { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--point); }
+  .countdown .lbl { font-size: 11px; color: var(--muted); }
+
+  /* ---------- 5. 오시는 길 ---------- */
+  .map-box { border-radius: 10px; overflow: hidden; margin-bottom: 18px; }
+  .map-box img { width: 100%; display: block; }
+  .location .addr { font-size: 15px; margin-bottom: 4px; }
+  .location .tel { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+  .map-btns { display: flex; gap: 8px; justify-content: center; }
+
+  /* 공통 버튼 */
+  .btn { display: inline-block; background: var(--paper); color: var(--text); border: 1px solid var(--line);
+         border-radius: 8px; padding: 11px 16px; font-size: 13px; cursor: pointer; font-family: inherit; }
+  .btn.point { background: var(--point); color: #fff; border-color: var(--point); }
+  .btn:active { opacity: .7; }
+
+  .transport { text-align: left; max-width: 320px; margin: 24px auto 0; font-size: 13.5px; color: var(--muted); }
+  .transport dt { color: var(--point); font-weight: 700; margin-top: 12px; }
+
+  /* ---------- 6. 마음 전하기(계좌) ---------- */
+  .account .acc-item { max-width: 340px; margin: 0 auto 10px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .acc-head { padding: 15px 18px; display: flex; justify-content: space-between; cursor: pointer; font-size: 14px; }
+  .acc-head span { color: var(--muted); }
+  .acc-body { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+  .acc-body .row { padding: 14px 18px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-size: 13.5px; }
+  .acc-body .row small { color: var(--muted); display: block; }
+  .copy { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; }
+
+  /* ---------- 7. 방명록 ---------- */
+  .guestbook .gb-form { max-width: 340px; margin: 0 auto 22px; }
+  .guestbook input, .guestbook textarea { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 12px; font-family: inherit; font-size: 14px; margin-bottom: 8px; background: var(--paper); }
+  .guestbook textarea { resize: none; height: 80px; }
+  .gb-list { max-width: 340px; margin: 0 auto; text-align: left; }
+  .gb-msg { background: var(--paper); border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+  .gb-msg .who { font-weight: 700; font-size: 13px; color: var(--point); margin-bottom: 4px; display: flex; justify-content: space-between; }
+  .gb-msg .who .del { color: var(--muted); font-weight: 400; cursor: pointer; }
+  .gb-msg .txt { font-size: 14px; }
+  .gb-empty { color: var(--muted); font-size: 13px; }
+
+  /* ---------- 8. RSVP ---------- */
+  .rsvp { background: #f2ece3; }
+  .rsvp p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+
+  /* ---------- 9. 공유 / 푸터 ---------- */
+  .share { padding-bottom: 40px; }
+  .footer { padding: 30px; text-align: center; font-size: 12px; color: var(--muted); background: var(--point); color: #fff2e6; }
+
+  /* 스크롤 등장 애니메이션 */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.show { opacity: 1; transform: none; }
+
+  /* BGM 토글 버튼 */
+  .bgm { position: fixed; top: 16px; right: calc(50% - 215px + 16px); z-index: 50; width: 40px; height: 40px; border-radius: 50%;
+         background: rgba(0,0,0,.35); color: #fff; border: none; font-size: 16px; cursor: pointer; backdrop-filter: blur(4px); }
+  @media (max-width: 430px) { .bgm { right: 16px; } }
+
+  /* RSVP 모달 */
+  .modal { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: none; align-items: center; justify-content: center; z-index: 150; padding: 20px; }
+  .modal.on { display: flex; }
+  .modal-card { background: var(--paper); border-radius: 14px; padding: 30px 24px; width: 100%; max-width: 360px; position: relative; text-align: center; }
+  .modal-card .x { position: absolute; top: 16px; right: 18px; font-size: 20px; color: var(--muted); cursor: pointer; }
+  .modal-card h2 { margin-bottom: 20px; }
+  .field { text-align: left; margin-bottom: 14px; }
+  .field label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+  .field input { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 11px; font-family: inherit; font-size: 14px; background: var(--bg); }
+  .seg { display: flex; gap: 6px; }
+  .seg button { flex: 1; border: 1px solid var(--line); background: var(--bg); border-radius: 8px; padding: 10px; font-family: inherit; font-size: 13px; cursor: pointer; color: var(--muted); }
+  .seg button.on { background: var(--point); color: #fff; border-color: var(--point); }
+
+  .gb-loading { color: var(--muted); font-size: 13px; }
+
+  .toast { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(20px); background: rgba(0,0,0,.82);
+           color: #fff; padding: 10px 20px; border-radius: 30px; font-size: 13px; opacity: 0; transition: .3s; z-index: 200; pointer-events: none; }
+  .toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <button class="bgm" id="bgmBtn" title="배경음악">♪</button>
+  <!-- 배경음악을 쓰려면 아래 src에 mp3 경로를 넣으세요 -->
+  <audio id="bgm" loop><source src="" type="audio/mpeg" /></audio>
+
+  <!-- ============ 1. 표지 ============ -->
+  <section class="cover">
+    <img src="https://picsum.photos/id/1015/860/1200" alt="메인 사진" />
+    <div class="over">
+      <div class="top">WE ARE GETTING MARRIED</div>
+      <div class="names">
+        오창휘
+        <small>그리고</small>
+        유진희
+      </div>
+      <div>
+        <div class="date">2027. 03. 27. SAT AM 11:00</div>
+        <div class="scroll-hint">︾</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. 인사말 ============ -->
+  <section class="greeting reveal">
+    <div class="sub">Invitation</div>
+    <div class="divider"></div>
+    <p class="poem">
+      서로가 마주보며 다져온 사랑을<br />
+      이제 함께 한 곳을 바라보며<br />
+      걸어가고자 합니다.
+    </p>
+    <p>
+      두 사람이 사랑으로 만나<br />
+      진실과 이해로써 하나가 되려 합니다.<br />
+      저희 두 사람의 새로운 시작을<br />
+      따뜻한 마음으로 축복해 주시면<br />
+      더없는 기쁨으로 간직하겠습니다.
+    </p>
+    <div class="family">
+      <div>오○○ · ○○○ 의 차남 <b>창휘</b></div>
+      <div>유선규 · 김미경 의 장녀 <b>진희</b></div>
+    </div>
+  </section>
+
+  <!-- ============ 3. 갤러리 ============ -->
+  <section class="gallery reveal">
+    <div class="sub">Gallery</div>
+    <h2>우리의 순간</h2>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- ============ 4. 예식 정보 ============ -->
+  <section class="info reveal">
+    <div class="sub">Wedding Day</div>
+    <div class="when">2027년 3월 27일 토요일 오전 11시</div>
+    <div class="place">인천아시아드웨딩컨벤션 그레이스홀</div>
+    <div class="cal" id="cal"></div>
+    <div class="countdown" id="countdown"></div>
+  </section>
+
+  <!-- ============ 5. 오시는 길 ============ -->
+  <section class="location reveal">
+    <div class="sub">Location</div>
+    <h2>오시는 길</h2>
+    <div class="map-box">
+      <!-- 실제 지도는 카카오/네이버 지도 API로 교체하세요 -->
+      <img src="https://picsum.photos/id/1036/430/240" alt="지도" />
+    </div>
+    <div class="addr">인천 서구 염곡로 725</div>
+    <div class="tel">인천아시아드웨딩컨벤션 · 032-765-6000</div>
+    <div class="map-btns">
+      <a class="btn" href="https://map.kakao.com/link/search/인천아시아드웨딩컨벤션" target="_blank">카카오맵</a>
+      <a class="btn" href="https://map.naver.com/v5/search/인천아시아드웨딩컨벤션" target="_blank">네이버지도</a>
+      <a class="btn point" href="https://map.kakao.com/link/search/인천아시아드웨딩컨벤션" target="_blank">길찾기</a>
+    </div>
+    <dl class="transport">
+      <dt>🚇 지하철</dt>
+      <dd>인천 2호선 <b>아시아드경기장역</b> 3번 출구 → 셔틀버스 이용<br />
+          (공항철도 이용 시 검암역에서 인천 2호선 환승)</dd>
+      <dt>🚌 버스</dt>
+      <dd>· 우성아파트 하차 — 24-1, 70, 111, 111B, 302, 310, e음86<br />
+          · 아시아드주경기장(동문) 하차 — 3-2, 71, e음86</dd>
+      <dt>🚐 셔틀버스</dt>
+      <dd>아시아드경기장역 3번 출구 앞에서 <b>20분 간격</b> 운행</dd>
+      <dt>🅿️ 주차</dt>
+      <dd>인천아시아드주경기장 <b>3번 게이트 앞 주차장</b><br />
+          (내비게이션: “아시아드웨딩컨벤션” 또는 “염곡로 725”)</dd>
+    </dl>
+  </section>
+
+  <!-- ============ 6. 마음 전하기 ============ -->
+  <section class="account reveal">
+    <div class="sub">Gift</div>
+    <h2>마음 전하실 곳</h2>
+    <div class="acc-item">
+      <div class="acc-head" onclick="toggleAcc(this)">신랑측 계좌번호 <span>▾</span></div>
+      <div class="acc-body">
+        <div class="row"><div>신랑 김민준<small>카카오뱅크 3333-01-1234567</small></div><button class="copy" data-acc="3333011234567">복사</button></div>
+        <div class="row"><div>아버지 김○○<small>국민 123-45-6789012</small></div><button class="copy" data-acc="1234567890 12">복사</button></div>
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-head" onclick="toggleAcc(this)">신부측 계좌번호 <span>▾</span></div>
+      <div class="acc-body">
+        <div class="row"><div>신부 이서연<small>신한 110-234-567890</small></div><button class="copy" data-acc="110234567890">복사</button></div>
+        <div class="row"><div>어머니 최○○<small>우리 1002-345-678901</small></div><button class="copy" data-acc="1002345678901">복사</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. 방명록 ============ -->
+  <section class="guestbook reveal">
+    <div class="sub">Guestbook</div>
+    <h2>축하 메시지</h2>
+    <div class="gb-form">
+      <input id="gbName" type="text" placeholder="이름" maxlength="12" />
+      <textarea id="gbText" placeholder="따뜻한 축하의 한마디를 남겨주세요" maxlength="200"></textarea>
+      <button class="btn point" style="width:100%" onclick="addMsg()">메시지 남기기</button>
+    </div>
+    <div class="gb-list" id="gbList"></div>
+  </section>
+
+  <!-- ============ 8. RSVP ============ -->
+  <section class="rsvp reveal">
+    <div class="sub">R.S.V.P</div>
+    <h2>참석 의사 전달</h2>
+    <p>참석 여부를 미리 알려주시면<br />더욱 정성껏 준비하겠습니다.</p>
+    <button class="btn point" onclick="rsvp()">참석 여부 전달하기</button>
+  </section>
+
+  <!-- ============ 9. 공유 ============ -->
+  <section class="share reveal">
+    <div class="sub">Share</div>
+    <button class="btn" onclick="shareKakao()">💬 카카오톡 공유</button>
+    <button class="btn" onclick="copyLink()">🔗 링크 복사</button>
+  </section>
+
+  <div class="footer">오창휘 ♥ 유진희 · 2027.03.27</div>
+
+</div>
+
+<!-- 라이트박스 -->
+<div class="lightbox" id="lightbox">
+  <span class="x" onclick="closeLb()">✕</span>
+  <span class="nav prev" onclick="moveLb(-1)">‹</span>
+  <img id="lbImg" src="" alt="" />
+  <span class="nav next" onclick="moveLb(1)">›</span>
+</div>
+
+<!-- RSVP 모달 -->
+<div class="modal" id="rsvpModal">
+  <div class="modal-card">
+    <span class="x" onclick="closeRsvp()">✕</span>
+    <h2>참석 의사 전달</h2>
+    <div class="field">
+      <label>구분</label>
+      <div class="seg" id="rsvpSide" data-val="신랑측">
+        <button type="button" class="on" onclick="segPick(this,'rsvpSide')">신랑측 하객</button>
+        <button type="button" onclick="segPick(this,'rsvpSide')">신부측 하객</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>참석 여부</label>
+      <div class="seg" id="rsvpAttend" data-val="참석">
+        <button type="button" class="on" onclick="segPick(this,'rsvpAttend')">참석</button>
+        <button type="button" onclick="segPick(this,'rsvpAttend')">불참</button>
+      </div>
+    </div>
+    <div class="field"><label>성함</label><input id="rsvpName" type="text" maxlength="12" placeholder="이름" /></div>
+    <div class="field"><label>참석 인원</label><input id="rsvpCount" type="number" min="1" value="1" /></div>
+    <div class="field">
+      <label>식사 여부</label>
+      <div class="seg" id="rsvpMeal" data-val="예정">
+        <button type="button" class="on" onclick="segPick(this,'rsvpMeal')">예정</button>
+        <button type="button" onclick="segPick(this,'rsvpMeal')">안 함</button>
+      </div>
+    </div>
+    <button class="btn point" style="width:100%;margin-top:8px" onclick="submitRsvp()">전달하기</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================
+   ⚙️ 기본 설정 — 이 부분만 바꾸면 됩니다
+   ========================================================= */
+const CONFIG = {
+  // Apps Script 웹앱 배포 후 발급된 /exec URL 을 여기에 붙여넣으세요
+  scriptUrl: 'https://script.google.com/macros/s/AKfycbytknKY7z7-e1tNB5YQ4F6U7b6kfwIt8y9ZEwBYufDH_t3s60PuFqiWR2Ku4Qv4pEO0/exec',
+  pollMs: 15000,                                 // 방명록 자동 갱신 간격(ms)
+  weddingDate: '2027-03-27T11:00:00',            // 예식 일시
+  gallery: [                                      // 갤러리 사진 URL (원하는 만큼)
+    'https://picsum.photos/id/1011/400/400',
+    'https://picsum.photos/id/1012/400/400',
+    'https://picsum.photos/id/1013/400/400',
+    'https://picsum.photos/id/1016/400/400',
+    'https://picsum.photos/id/1018/400/400',
+    'https://picsum.photos/id/1024/400/400',
+    'https://picsum.photos/id/1025/400/400',
+    'https://picsum.photos/id/1027/400/400',
+    'https://picsum.photos/id/1035/400/400',
+  ],
+};
+
+/* ---------- 갤러리 + 라이트박스 ---------- */
+const grid = document.getElementById('grid');
+CONFIG.gallery.forEach((src, i) => {
+  const img = document.createElement('img');
+  img.src = src; img.loading = 'lazy';
+  img.onclick = () => openLb(i);
+  grid.appendChild(img);
+});
+let lbIndex = 0;
+const lb = document.getElementById('lightbox'), lbImg = document.getElementById('lbImg');
+function openLb(i){ lbIndex = i; lbImg.src = CONFIG.gallery[i]; lb.classList.add('on'); }
+function closeLb(){ lb.classList.remove('on'); }
+function moveLb(d){ lbIndex = (lbIndex + d + CONFIG.gallery.length) % CONFIG.gallery.length; lbImg.src = CONFIG.gallery[lbIndex]; }
+lb.onclick = e => { if(e.target === lb) closeLb(); };
+
+/* ---------- 캘린더 ---------- */
+(function(){
+  const d = new Date(CONFIG.weddingDate);
+  const y = d.getFullYear(), m = d.getMonth(), day = d.getDate();
+  const first = new Date(y, m, 1).getDay(), last = new Date(y, m+1, 0).getDate();
+  const days = ['일','월','화','수','목','금','토'];
+  let html = `<table><tr>${days.map((n,i)=>`<th class="${i===0?'sun':''}">${n}</th>`).join('')}</tr><tr>`;
+  let col = 0;
+  for(let i=0;i<first;i++){ html += '<td></td>'; col++; }
+  for(let dt=1;dt<=last;dt++){
+    if(col===7){ html += '</tr><tr>'; col=0; }
+    html += `<td class="${col===0?'sun':''} ${dt===day?'today':''}">${dt}</td>`; col++;
+  }
+  html += '</tr></table>';
+  document.getElementById('cal').innerHTML = html;
+})();
+
+/* ---------- 카운트다운 ---------- */
+(function(){
+  const el = document.getElementById('countdown');
+  const tick = () => {
+    const diff = new Date(CONFIG.weddingDate) - new Date();
+    if(diff <= 0){ el.innerHTML = '<div><div class="num">♥</div><div class="lbl">결혼했습니다</div></div>'; return; }
+    const dd = Math.floor(diff/864e5), hh = Math.floor(diff/36e5)%24, mm = Math.floor(diff/6e4)%60, ss = Math.floor(diff/1e3)%60;
+    const cell = (n,l)=>`<div><div class="num">${n}</div><div class="lbl">${l}</div></div>`;
+    el.innerHTML = cell(dd,'DAYS')+cell(hh,'HOUR')+cell(mm,'MIN')+cell(ss,'SEC');
+  };
+  tick(); setInterval(tick, 1000);
+})();
+
+/* ---------- 계좌 아코디언 + 복사 ---------- */
+function toggleAcc(head){
+  const body = head.nextElementSibling;
+  const open = body.style.maxHeight && body.style.maxHeight !== '0px';
+  body.style.maxHeight = open ? '0px' : body.scrollHeight + 'px';
+  head.querySelector('span').textContent = open ? '▾' : '▴';
+}
+document.querySelectorAll('.copy').forEach(btn => {
+  btn.onclick = () => copyText(btn.dataset.acc.replace(/\s/g,''), '계좌번호가 복사되었습니다');
+});
+
+/* ---------- 시트 통신 헬퍼 ----------
+   POST는 text/plain 으로 보내 preflight(OPTIONS)를 피함 → Apps Script CORS 회피 */
+function post(payload){
+  // 응답 본문은 읽지 않으므로 no-cors 로 보내 CORS 리다이렉트 이슈를 피함(쓰기 전용)
+  return fetch(CONFIG.scriptUrl, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
+}
+
+/* ---------- 방명록 (Google Sheets) ---------- */
+const gbList = document.getElementById('gbList');
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function fmtDate(t){ if(!t) return ''; const d = new Date(t); return isNaN(d) ? '' : `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`; }
+
+function renderMsgs(msgs){
+  if(!msgs.length){ gbList.innerHTML = '<div class="gb-empty">첫 번째 축하 메시지를 남겨보세요 💌</div>'; return; }
+  gbList.innerHTML = msgs.map(m => `
+    <div class="gb-msg">
+      <div class="who"><span>${esc(m.name)}</span><span style="color:var(--muted);font-weight:400">${fmtDate(m.time)}</span></div>
+      <div class="txt">${esc(m.text)}</div>
+    </div>`).join('');
+}
+
+function loadMsgs(){
+  if(!CONFIG.scriptUrl){ gbList.innerHTML = '<div class="gb-empty">⚙️ CONFIG.scriptUrl 을 설정하면 방명록이 활성화됩니다</div>'; return; }
+  fetch(CONFIG.scriptUrl + '?action=guestbook')
+    .then(r => r.json())
+    .then(renderMsgs)
+    .catch(() => { gbList.innerHTML = '<div class="gb-empty">불러오기에 실패했습니다</div>'; });
+}
+
+function addMsg(){
+  if(!CONFIG.scriptUrl){ toast('scriptUrl 이 설정되지 않았습니다'); return; }
+  const nameEl = document.getElementById('gbName'), textEl = document.getElementById('gbText');
+  const name = nameEl.value.trim(), text = textEl.value.trim();
+  if(!name || !text){ toast('이름과 메시지를 입력해주세요'); return; }
+  gbList.innerHTML = '<div class="gb-loading">등록 중…</div>';
+  post({ type: 'guestbook', name, text })
+    .then(() => { nameEl.value = ''; textEl.value = ''; toast('축하 메시지가 등록되었습니다'); loadMsgs(); })
+    .catch(() => toast('등록에 실패했습니다'));
+}
+
+loadMsgs();
+if(CONFIG.scriptUrl && CONFIG.pollMs){ setInterval(loadMsgs, CONFIG.pollMs); }
+
+/* ---------- RSVP ---------- */
+const rsvpModal = document.getElementById('rsvpModal');
+function rsvp(){ rsvpModal.classList.add('on'); }
+function closeRsvp(){ rsvpModal.classList.remove('on'); }
+rsvpModal.onclick = e => { if(e.target === rsvpModal) closeRsvp(); };
+
+/* 세그먼트 버튼(택1) 선택 */
+function segPick(btn, groupId){
+  const group = document.getElementById(groupId);
+  group.querySelectorAll('button').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  group.dataset.val = btn.textContent.trim();
+}
+
+function submitRsvp(){
+  if(!CONFIG.scriptUrl){ toast('scriptUrl 이 설정되지 않았습니다'); return; }
+  const name = document.getElementById('rsvpName').value.trim();
+  if(!name){ toast('성함을 입력해주세요'); return; }
+  const payload = {
+    type: 'rsvp',
+    side:   document.getElementById('rsvpSide').dataset.val,
+    attend: document.getElementById('rsvpAttend').dataset.val,
+    name,
+    count:  document.getElementById('rsvpCount').value,
+    meal:   document.getElementById('rsvpMeal').dataset.val,
+  };
+  post(payload)
+    .then(() => { closeRsvp(); toast('참석 의사가 전달되었습니다. 감사합니다!'); })
+    .catch(() => toast('전달에 실패했습니다'));
+}
+
+/* ---------- 공유 ---------- */
+function shareKakao(){
+  /* 실제 사용: Kakao SDK 로드 후 Kakao.Share.sendDefault(...) 호출 */
+  copyText(location.href, '카카오 SDK 연결 전 — 링크를 복사했습니다');
+}
+function copyLink(){ copyText(location.href, '링크가 복사되었습니다'); }
+
+/* ---------- 공용: 복사 + 토스트 ---------- */
+function copyText(text, msg){
+  navigator.clipboard?.writeText(text).then(()=>toast(msg)).catch(()=>toast('복사 실패'));
+}
+let toastTimer;
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('on');
+  clearTimeout(toastTimer); toastTimer = setTimeout(()=>t.classList.remove('on'), 1800);
+}
+
+/* ---------- 스크롤 등장 애니메이션 ---------- */
+const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('show')), {threshold: .12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ---------- BGM ---------- */
+const bgm = document.getElementById('bgm'), bgmBtn = document.getElementById('bgmBtn');
+let playing = false;
+bgmBtn.onclick = () => {
+  if(!bgm.querySelector('source').src){ toast('audio 태그에 mp3 경로를 넣어주세요'); return; }
+  playing ? bgm.pause() : bgm.play();
+  playing = !playing; bgmBtn.textContent = playing ? '❚❚' : '♪';
+};
+</script>
+</body>
+</html>
